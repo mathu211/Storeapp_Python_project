@@ -24,9 +24,19 @@ SECRET_KEY = 'django-insecure-03nsalo%(ak0k9+gt1+s3ig5xsfmbu)leslwke6r!z(lz7q0^%
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+ALLOWED_HOSTS = ['*']
 
-ALLOWED_HOSTS = ['gamestore.azurewebsites.net', 'localhost']
+# CSRF trusted origins for Azure App Service
+CSRF_TRUSTED_ORIGINS = [
+    'https://storeapp-e3b3gzf9exambgbr.southindia-01.azurewebsites.net',
+]
 
+# Optional production security settings
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+#ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -90,7 +100,7 @@ DATABASES = {
         "PORT": "1433",
         "OPTIONS": {
             "driver": "ODBC Driver 18 for SQL Server",
-            "extra_params": "Encrypt=yes;TrustServerCertificate=no;Connection Timeout=60",
+            "extra_params": "Encrypt=yes;TrustServerCertificate=yes;Connection Timeout=120",
         },
     }
 }
