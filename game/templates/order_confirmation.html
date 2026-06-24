@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation - Game Store</title>
+    <style>
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        body { 
+            font-family: 'Arial', sans-serif; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .confirmation-container {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            max-width: 500px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            color: #27ae60;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .order-number {
+            background: #f0f0f0;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1.5rem 0;
+            border-left: 4px solid #27ae60;
+        }
+        
+        .order-number-label {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .order-number-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .message {
+            color: #555;
+            line-height: 1.6;
+            margin: 1.5rem 0;
+            font-size: 1rem;
+        }
+        
+        .order-details {
+            background: #f9f9f9;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1.5rem 0;
+            text-align: left;
+            border: 1px solid #ecf0f1;
+        }
+        
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 0.5rem 0;
+            color: #555;
+        }
+        
+        .detail-label {
+            font-weight: bold;
+        }
+        
+        .next-steps {
+            background: #e8f8f5;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1.5rem 0;
+            border-left: 4px solid #1abc9c;
+            text-align: left;
+        }
+        
+        .next-steps h3 {
+            color: #16a085;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .next-steps ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .next-steps li {
+            color: #555;
+            margin: 0.3rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .next-steps li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #1abc9c;
+            font-weight: bold;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn-secondary {
+            background-color: #95a5a6;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="confirmation-container">
+        <div class="success-icon">✅</div>
+        
+        <h1>Order Placed Successfully!</h1>
+        
+        <p class="message">
+            Thank you for your order! Your payment has been received and is being processed.
+        </p>
+        
+        <div class="order-number">
+            <div class="order-number-label">Order Number:</div>
+            <div class="order-number-value">#{{ order.id }}</div>
+        </div>
+        
+        <div class="order-details">
+            <div class="detail-item">
+                <span class="detail-label">Order Date:</span>
+                <span>{{ order.placed_at|date:"M d, Y H:i" }}</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Status:</span>
+                <span style="color: #f39c12;">🕐 Pending</span>
+            </div>
+        </div>
+        
+        <div class="next-steps">
+            <h3>What's Next?</h3>
+            <ul>
+                <li>We'll send a confirmation email shortly</li>
+                <li>Your order will be shipped within 2-3 business days</li>
+                <li>You can track your order from the Orders page</li>
+            </ul>
+        </div>
+        
+        <div class="buttons">
+            <a href="{% url 'product_list' %}" class="btn btn-primary">Continue Shopping</a>
+            <a href="{% url 'orders_list' %}" class="btn btn-secondary">View Orders</a>
+        </div>
+    </div>
+</body>
+</html>
