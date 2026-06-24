@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-03nsalo%(ak0k9+gt1+s3ig5xsfmbu)leslwke6r!z(lz7q0^%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 # CSRF trusted origins for Azure App Service
@@ -32,10 +32,10 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 # Optional production security settings
-#SECURE_SSL_REDIRECT = True
-#SESSION_COOKIE_SECURE = True
-#CSRF_COOKIE_SECURE = True
-#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 #ALLOWED_HOSTS = []
 
 # Application definition
@@ -100,7 +100,7 @@ DATABASES = {
         "PORT": "1433",
         "OPTIONS": {
             "driver": "ODBC Driver 18 for SQL Server",
-            "extra_params": "Encrypt=no;TrustServerCertificate=yes;Connection Timeout=120",
+            "extra_params": "Encrypt=yes;TrustServerCertificate=yes;Connection Timeout=120",
         },
     }
 }
